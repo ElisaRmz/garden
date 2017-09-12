@@ -1,0 +1,27 @@
+<%= link_to 'Volver', pests_path %>
+
+<p>
+  <strong>Plaga:</strong>
+  <%= @pest.name %>
+</p>
+<p>
+  <strong>Grupo:</strong>
+  <%= @pest.group %>
+</p>
+<p>
+  <strong>Daños:</strong>
+  <%= @pest.damage %>
+</p>
+<p>
+  <strong>Combatirlos:</strong>
+  <%= @pest.beat %>
+</p>
+<p>
+  <strong>Plantas afectadas:</strong>
+  <%= @pest.plants.map(&:name) %>
+</p>
+
+<%= link_to 'Volver', pests_path %>
+<%= link_to 'Editar', edit_pest_path(@pest) %>
+<%= link_to 'Eliminar', pest_path(@pest), method: :delete, data: {confirm: '¿Quieres eliminarlo?' } %>
+<%= link_to 'Añadir invasor', new_pest_path %>

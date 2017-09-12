@@ -1,0 +1,87 @@
+<%= link_to 'Inicio', root_path %>
+<%= link_to 'Mi listado de plantas', plants_path %><br>
+<%= link_to 'Añadir planta', new_plant_path %>
+<p>
+  <strong>Planta:</strong>
+  <%= @plant.name %>
+</p>
+<p>
+  <strong>Comestible:</strong>
+  <%= @plant.edible %>
+</p>
+<p>
+  <strong>Familia:</strong>
+  <%= @plant.family&.name %>
+</p>
+
+<h2>Trabajos</h2>
+<p>
+  <strong>Sembrar:</strong>
+  <%= @plant.seed %>
+</p>
+<p>
+  <strong>Plantar:</strong>
+  <%= @plant.grow %> 
+</p>
+<p>
+  <strong>Cosechar:</strong>
+  <%= @plant.harvest %>
+</p>
+
+<h2>Cuidados</h2>
+<p>
+    <strong>Luz:</strong>
+    <%= @plant.sun %>
+</p>
+<p>
+    <strong>Agua:</strong>
+    <%= @plant.water %>
+</p>
+<p>
+  <strong>Temperatura:</strong>
+  <%= @plant.temperature %>
+</p>
+<p>
+  <strong><%= link_to 'Enfermedades:', pests_path(@pest) %></strong>
+  <%= @plant.pests.map(&:name) %>
+</p>
+
+<h2>Espacio que ocupa</h2>
+<p>
+    <strong>Diametro cm:</strong>
+    <%= @plant.diameter %>
+</p>
+<p>
+  <strong>Volumen L:</strong>
+  <%= @plant.volume %>
+</p>
+<p>
+    <strong>Altura del contenedor cm:</strong>
+    <%= @plant.height %>
+</p>
+<p>
+    <strong>Altura de la planta cm:</strong>
+    <%= @plant.tallness %>
+</p>
+<p>
+    <strong>Tipo de raíz:</strong>
+    <%= @plant.depth %>
+</p>
+
+<h2>Asociaciones</h2>
+<p>
+    <strong>Positivas:</strong>
+    <%= @plant.positive %>
+</p>
+<p>
+    <strong>Negativas:</strong>
+    <%= @plant.negative %>
+</p>
+<p>
+    <strong>Notas:</strong>
+    <%= @plant.note %>
+</p>
+
+<%= link_to 'Volver', plants_path %>
+<%= link_to 'Editar', edit_plant_path(@plant) %>
+<%= link_to 'Eliminar', plant_path(@plant), method: :delete, data: {confirm: '¿Quieres eliminarlo?' } %>

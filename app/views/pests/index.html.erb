@@ -1,0 +1,55 @@
+<%= link_to 'Inicio', root_path %>
+
+<h1>¿Cómo prevenirlas?</h1>
+
+<p>Infusión ajo y guindilla: Machaca un ajo y una guindilla. Añádelos a un litro de agua hirviendo. Deja reposar 10 minutos y cuela. Déjalo enfriar. Puedes aplicarlo con un vaporizador. Aplicar a la salida o puesta del sol, ya que se degrada con el sol y la temperatura.</p>
+
+<h1>¿Cómo eliminarlas?</h1>
+
+<p>Jabón Potásico: (pulgón, cochinilla, mosca blanca,... insectos)</p>
+
+<p>Aceite de Neem: preventivo y también situaciones extremas. (más peligroso, esperar 3 días) (pulgón, cochinilla, mosca blanca,... insectos)</p>
+
+<p>Propóleo: hongos (oidium, mildeo, roya, antraclosis) añadir cada 2 semanas</p>
+
+<p>Bacillus Thuringiensis: contra orugas (agujeros en las hojas)</p>
+
+<h5>Insecto: animal invertebrado con dos antenas y seis patas, con o sin alas. No son insectos: cienpiés, milpiés, escorpiones, arañas y cochinilla de la humedad.</h5>
+
+<h1>Invasores</h1>
+
+<% @pests.sort_by{ |pest| pest.name }.each do |pest| %>
+  <%= link_to pest.name, pest_path(pest) %>
+<% end %><br>
+
+<%= link_to 'Áñade invasor', new_pest_path %>
+
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;}
+th, td {
+    padding: 5px;}
+</style>
+
+<table>
+  <tr>
+    <th colspan="2"></th>
+    <th>Invasor</th>
+    <th>Grupo</th>
+    <th>Afecta a</th>
+    <th>Daños</th>
+    <th>Eliminarlo</th>
+  </tr>
+  <% @pests.sort_by{ |pest| pest.name }.each do |pest| %>
+    <tr>
+      <td><%= link_to 'Ver', pest_path(pest) %></td>
+      <td><%= link_to 'Editar',edit_pest_path(pest)  %></td>
+      <td><%= pest.name %></td>
+      <td><%= pest.group %></td>
+      <td><%= pest.plants.map(&:name).sort %></td>
+      <td><%= pest.damage %></td>
+      <td><%= pest.beat %></td>
+    </tr>
+  <% end %>
+</table>

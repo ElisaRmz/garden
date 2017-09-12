@@ -1,0 +1,16 @@
+<%= form_for @land do |f| %>
+  
+  <p>
+    <%= f.label :'Mi Huerto' %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :Plantas %><br>
+    <%= f.collection_check_boxes(:plant_ids, Plant.all, :id, :name) %><br>
+    <%= link_to 'Añadir planta', new_plant_path %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>

@@ -1,0 +1,22 @@
+<%= link_to 'Inicio', root_path %>
+<%= '-' %>
+<%= link_to 'Plantas', plants_path %><br>
+
+<%= link_to 'Añadir familia', new_family_path %>
+
+<h1>Familias de plantas:</h1>
+
+<table>
+  
+  <% @families.sort_by(&:name).each do |family| %>
+    <tr>
+      <td><%= link_to 'Ver', family_path(family) %></td>
+      <td><%= family.name %><%= ':' %></td>
+      <td><%= family.definition %></td>
+    </tr>
+  <% end %>
+
+</table>
+
+<h3>Mas información:</h3>
+<%= link_to 'http://www.frutas-hortalizas.com', 'http://www.frutas-hortalizas.com' %>

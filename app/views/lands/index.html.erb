@@ -1,0 +1,50 @@
+<%= link_to 'Inicio', root_path %>
+
+<h1>Mis huertos</h1>
+
+<%= link_to 'Añadir Huerto', new_land_path %>
+
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;}
+th, td {
+    padding: 5px;}
+</style>
+
+<table>
+  <tr>
+    <th colspan="3"></th>
+    <th>Nombre</th>
+    <th>Plantas</th>
+  </tr>
+  <% @lands.sort_by(&:name).each do |land| %>
+    <tr>
+      <td><%= link_to 'Ver', land_path(land) %></td>
+      <td><%= link_to 'Editar', edit_land_path(land) %></td>
+      <td><%= link_to 'Eliminar', land_path(land), method: :delete %></td>
+      <td><%= land.name %></td>
+      <td><%= land.plants.map(&:name).sort %></td>
+    </tr>
+  <% end %>
+</table><br>
+
+<table>
+
+  <tr>
+    <th></th>
+    <% @lands.sort_by(&:name).each do |land| %>
+      <th><%= land.name %></th>
+    <% end %>
+  </tr>
+
+  <% @plants.sort_by(&:name).each do |plant| %>
+    <tr>
+      <th><%= link_to plant.name, plant_path(plant) %></th>
+      <% @lands.sort_by(&:name).each do |land| %>
+        <td align="center"><%= "•" if land.plants.exists?(name: plant.name) %></td>
+      <% end %>
+    </tr>
+  <% end %>
+
+</table>

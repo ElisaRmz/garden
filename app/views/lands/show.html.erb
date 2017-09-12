@@ -1,0 +1,10 @@
+<%= link_to 'Mis Huertos', lands_path %>
+
+<p>
+  <strong><%= @land.name %></strong>
+</p>
+<p>
+  <%= @land.plants.map(&:name) %>
+</p>
+
+<%= link_to 'Editar', edit_land_path(@land) %>

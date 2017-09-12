@@ -1,0 +1,25 @@
+<%= form_for @pest do |f| %>
+  <p>
+    <%= f.label :Invasor %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :Grupo %>
+    <%= f.select(:group, options_for_select([['Hongo', 1], ['Insecto', 2], ['Molusco', 3]])) %>
+  </p>
+  <p>
+    <%= f.label :Daños %>
+    <%= f.text_area :damage %>
+  </p>
+  <p>
+    <%= f.label :Elimarlos %>
+    <%= f.text_area :beat %>
+  </p>
+  <p>
+    <%= f.label 'Plantas afectadas' %>
+    <%= f.collection_check_boxes(:plant_ids, Plant.all, :id, :name) %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

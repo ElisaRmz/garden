@@ -1,0 +1,17 @@
+<%= form_for @family do |f| %>
+  
+  <p>
+    <%= f.label :Familia%>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :Descripción %>
+    <%= f.text_area :definition %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
