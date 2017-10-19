@@ -1,0 +1,33 @@
+<%= link_to 'Volver', plants_path %>
+<p></p>
+
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;}
+th, td {
+    padding: 5px;}
+</style>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th>Nombre</th>
+    <th>Luz</th>
+    <th>Agua</th>
+    <th>Temperatura</th>
+    <th>Enfermedades</th>
+  </tr>
+  <% @plants.sort_by{ |plant| plant.name }.each do |plant| %>
+    <tr>
+      <td><%= link_to 'Ver', plant_path(plant) %></td>
+      <td><%= link_to 'Editar', edit_plant_path(plant) %></td>
+      <td><%= plant.name %></td>
+      <td><%= plant.sun %></td>
+      <td><%= plant.water %></td>
+      <td><%= plant.temperature %></td>
+      <td><%= plant.pests.map(&:name).sort %></td>
+    </tr>
+  <% end %>
+</table>

@@ -5,7 +5,7 @@
   </p>
   <p>
     <%= f.label :Grupo %>
-    <%= f.select(:group, options_for_select([['Hongo', 1], ['Insecto', 2], ['Molusco', 3]])) %>
+    <%= f.collection_select(:group, GROUP_PEST, :to_s, :to_s) %>
   </p>
   <p>
     <%= f.label :Daños %>
@@ -16,8 +16,8 @@
     <%= f.text_area :beat %>
   </p>
   <p>
-    <%= f.label 'Plantas afectadas' %>
-    <%= f.collection_check_boxes(:plant_ids, Plant.all, :id, :name) %>
+    <%= f.label 'Plantas afectadas:' %>
+    <%= f.collection_check_boxes(:plant_ids, Plant.all.order(:name), :id, :name) %>
   </p>
   <p>
     <%= f.submit %>

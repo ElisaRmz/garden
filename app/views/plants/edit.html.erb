@@ -1,4 +1,6 @@
-<%= link_to 'Volver', plants_path %>
+<%= link_to 'Volver', plants_path %> -
+<%= link_to 'Siguiente planta', edit_plant_path(@plant.id.next) %>
+<p> => No se ordena por orden alfabético y hay problemas con id que no existen</p>
 
 <h1>Editar Planta</h1>
 

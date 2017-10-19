@@ -24,21 +24,26 @@
 </p>
 <p>
   <%= f.label :Familia %>
-  <%= f.collection_select(:family_id, Family.order(:name), :id, :name) %>
+  <%= f.collection_select(:family_id, Family.order(:name), :id, :name, {include_blank: true}) %>
 </p>
 
 <h3>Trabajos</h3>
+<%= '=> ¡No guarda cambios en fechas!' %>
 <p>
   <%= f.label :Sembrar %>
-  <%= f.date_select(:seed, discard_year: true) %>
+  <%= f.collection_check_boxes(:seed, MONTH, :to_s, :to_s) %>
 </p>
 <p>
   <%= f.label :Plantar %>
-  <%= f.text_field :grow %>
+  <%= f.collection_check_boxes(:grow, MONTH, :to_s, :to_s) %>
 </p>
 <p>
   <%= f.label :Cosechar %>
-  <%= f.text_field :harvest %>
+  <%= f.collection_check_boxes(:harvest, MONTH, :to_s, :to_s) %>
+</p>
+<p>
+  <%= f.label 'Notas de trabajos' %>
+  <%= f.text_area :works_note %>
 </p>
 
 <h3>Cuidados</h3>
@@ -48,37 +53,37 @@
 </p>
 <p>
   <%= f.label :Agua %>
-  <%= f.text_field :water %>
+  <%= f.collection_select(:water, WATER, :to_s, :to_s) %>
 </p>
 <p>
   <%= f.label :Temperatura %>
   <%= f.text_field :temperature %> 
 </p>
 <p>
-  <%= f.label :'Enfermedades:' %>
+  <%= f.label 'Enfermedades:' %>
   <%= f.collection_check_boxes(:pest_ids, Pest.order(:name), :id, :name, {include_hidden: false}) %>
 </p>
 
 <h3>Espacio que ocupa</h3>
 <p>
-  <%= f.label :'Diametro cm' %>
+  <%= f.label 'Diametro cm' %>
   <%= f.text_field :diameter %>
 </p>
 <p>
-  <%= f.label :'Volumen L' %>
+  <%= f.label 'Volumen L' %>
   <%= f.text_field :volume %>
 </p>
 <p>
-  <%= f.label :'Altura del contenedor cm' %>
+  <%= f.label 'Altura del contenedor cm' %>
   <%= f.text_field :height %>
 </p>
 <p>
-  <%= f.label :'Altura de la planta cm' %>
-  <%= f.text_field :tallness %>
+  <%= f.label 'Tipo de raíz' %>
+  <%= f.collection_select(:depth, DEPTH, :to_s, :to_s) %>
 </p>
 <p>
-  <%= f.label :'Tipo de raíz' %>
-  <%= f.text_field :depth %>
+  <%= f.label 'Altura de la planta cm' %>
+  <%= f.text_field :tallness %>
 </p>
 
 <h3>Asociaciones</h3>

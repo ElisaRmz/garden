@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170905114311) do
+ActiveRecord::Schema.define(version: 20171002122221) do
 
   create_table "families", force: :cascade do |t|
     t.string "name"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20170905114311) do
     t.string "negative"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "seed"
+    t.text "seed"
     t.text "grow"
     t.text "harvest"
     t.string "volume"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20170905114311) do
     t.integer "tallness"
     t.integer "family_id"
     t.text "note"
+    t.text "works_note"
     t.index ["family_id"], name: "index_plants_on_family_id"
   end
 

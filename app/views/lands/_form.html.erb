@@ -6,7 +6,7 @@
   </p>
   <p>
     <%= f.label :Plantas %><br>
-    <%= f.collection_check_boxes(:plant_ids, Plant.all, :id, :name) %><br>
+    <%= f.collection_check_boxes(:plant_ids, Plant.all.order(:name), :id, :name) %><br>
     <%= link_to 'Añadir planta', new_plant_path %>
   </p>
   <p>

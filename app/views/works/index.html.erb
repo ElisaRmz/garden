@@ -1,0 +1,32 @@
+<%= link_to 'Inicio', root_path %>,
+<%= link_to 'Mi listado de plantas', plants_path %>
+<p></p>
+
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;}
+th, td {
+    padding: 5px;}
+</style>
+
+<table>
+  <tr>
+    <th colspan="3"></th>
+    <th>Nombre</th>
+    <th>Sembrar</th>
+    <th>Plantar</th>
+    <th>Cosechar</th>
+  </tr>
+  <% @plants.sort_by(&:name).each do |plant| %>
+    <tr>
+      <td><%= link_to 'Ver', plant_path(plant) %></td>
+      <td><%= link_to 'Editar', edit_plant_path(plant) %></td>
+      <td><%= link_to 'Eliminar', plant_path(plant), method: :delete %></td>
+      <td><%= plant.name %></td>
+      <td><%= plant.seed %></td>
+      <td><%= plant.grow %></td>
+      <td><%= plant.harvest %></td>
+    </tr>
+  <% end %>
+</table>

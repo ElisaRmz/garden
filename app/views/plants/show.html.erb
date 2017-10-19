@@ -1,13 +1,17 @@
-<%= link_to 'Inicio', root_path %>
+<%= link_to 'Inicio', root_path %> - 
 <%= link_to 'Mi listado de plantas', plants_path %><br>
-<%= link_to 'Añadir planta', new_plant_path %>
-<p>
-  <strong>Planta:</strong>
-  <%= @plant.name %>
-</p>
+<%= link_to 'Añadir planta', new_plant_path %> -
+<%= link_to 'Siguiente planta', plant_path(@plant.id.next) %> 
+<p> => No se ordena por orden alfabético y hay problemas con id que no existen</p>
+
+<h1><%= @plant.name %></h1>
 <p>
   <strong>Comestible:</strong>
   <%= @plant.edible %>
+</p>
+<p>
+  <strong>Huertos:</strong>
+  <%= @plant.lands.order(:name).pluck(:name) %>
 </p>
 <p>
   <strong>Familia:</strong>
@@ -27,6 +31,10 @@
   <strong>Cosechar:</strong>
   <%= @plant.harvest %>
 </p>
+<p>
+  <strong>Notas de trabajos:</strong>
+  <%= @plant.works_note %>
+</p>
 
 <h2>Cuidados</h2>
 <p>
@@ -43,7 +51,7 @@
 </p>
 <p>
   <strong><%= link_to 'Enfermedades:', pests_path(@pest) %></strong>
-  <%= @plant.pests.map(&:name) %>
+  <%= @plant.pests.sort_by(&:name).map(&:name) %>
 </p>
 
 <h2>Espacio que ocupa</h2>
@@ -60,12 +68,12 @@
     <%= @plant.height %>
 </p>
 <p>
-    <strong>Altura de la planta cm:</strong>
-    <%= @plant.tallness %>
-</p>
-<p>
     <strong>Tipo de raíz:</strong>
     <%= @plant.depth %>
+</p>
+<p>
+    <strong>Altura de la planta cm:</strong>
+    <%= @plant.tallness %>
 </p>
 
 <h2>Asociaciones</h2>
@@ -82,6 +90,5 @@
     <%= @plant.note %>
 </p>
 
-<%= link_to 'Volver', plants_path %>
 <%= link_to 'Editar', edit_plant_path(@plant) %>
 <%= link_to 'Eliminar', plant_path(@plant), method: :delete, data: {confirm: '¿Quieres eliminarlo?' } %>

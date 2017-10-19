@@ -6,10 +6,13 @@
   <%= link_to plant.name, plant_path(plant) %>,
 <% end %><br>
 
-<%= link_to 'Añadir Planta', new_plant_path %><br>
+<h3><%= link_to 'Añadir Planta', new_plant_path %></h3>
 
-<%= link_to 'Familias de plantas:', families_path %>
+<%= link_to 'FAMILIAS:', families_path %>
 
+<% @families.sort_by(&:name).each do |family| %>
+  <%= link_to family.name, family_path(family) %>,
+<% end %>
 
 <style>
 table, th, td {
@@ -19,92 +22,14 @@ th, td {
     padding: 5px;}
 </style>
 
-<h3>Trabajos a realizar:</h3>
+<h2 align='center'><%= link_to 'Trabajos a realizar', works_path %><%= ' - ' %>
+    <%= link_to 'Cuidados', cares_path %><%= ' - ' %>
+    <%= link_to 'Distancias y dimensiones', measures_path %></h2>
+
+<h2><%= link_to 'Asociaciones de plantas:', asociations_path %></h2>
 
 <table>
   <tr>
-    <th colspan="3"></th>
-    <th>Nombre</th>
-    <th>Comestible</th>
-    <th>Sembrar</th>
-    <th>Plantar</th>
-    <th>Cosechar</th>
-  </tr>
-  <% @plants.sort_by(&:name).each do |plant| %>
-    <tr>
-      <td><%= link_to 'Ver', plant_path(plant) %></td>
-      <td><%= link_to 'Editar', edit_plant_path(plant) %></td>
-      <td><%= link_to 'Eliminar', plant_path(plant), method: :delete %></td>
-      <td><%= plant.name %></td>
-      <td><%= plant.edible %></td>
-      <td><%= plant.seed.mon %></td>
-      <td><%= plant.grow %></td>
-      <td><%= plant.harvest %></td>
-    </tr>
-  <% end %>
-</table><br>
-
-<h3>Cuidados:</h3>
-
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th>Nombre</th>
-    <th>Luz</th>
-    <th>Agua</th>
-    <th>Temperatura</th>
-    <th>Enfermedades</th>
-  </tr>
-  <% @plants.sort_by{ |plant| plant.name }.each do |plant| %>
-    <tr>
-      <td><%= link_to 'Ver', plant_path(plant) %></td>
-      <td><%= link_to 'Editar', edit_plant_path(plant) %></td>
-      <td><%= plant.name %></td>
-      <td><%= plant.sun %></td>
-      <td><%= plant.water %></td>
-      <td><%= plant.temperature %></td>
-      <td><%= plant.pests.map(&:name).sort %></td>
-    </tr>
-  <% end %>
-</table><br>
-
-<h3>Distancias y dimensiones:</h3>
-
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th>Nombre</th>
-    <th>Diametro cm</th>
-    <th>Volumen L</th>
-    <th>Altura del contenedor cm</th>
-    <th>Altura de la planta cm</th>
-    <th>Tipo de raíz</th>
-  </tr>
-  <% @plants.sort_by{ |plant| plant.name }.each do |plant| %>
-    <tr>
-      <td><%= link_to 'Ver', plant_path(plant) %></td>
-      <td><%= link_to 'Editar', edit_plant_path(plant) %></td>
-      <td><%= plant.name %></td>
-      <td><%= plant.diameter %></td>
-      <td><%= plant.volume %></td>
-      <td><%= plant.height %></td>
-      <td><%= plant.tallness %></td>
-      <td><%= plant.depth %></td>
-
-    </tr>
-  <% end %>
-</table>
-
-
-<h3>Asociaciones</h3>
-<%= link_to 'Asociaciones de plantas', asociations_path %><br>
-
-<table>
-  <tr>
-    <th></th>
-    <th></th>
     <th>Nombre</th>
     <th>Familia</th>
     <th>Positivas</th>
@@ -112,9 +37,7 @@ th, td {
   </tr>
   <% @plants.sort_by{ |plant| plant.name }.each do |plant| %>
     <tr>
-      <td><%= link_to 'Ver', plant_path(plant) %></td>
-      <td><%= link_to 'Editar', edit_plant_path(plant) %></td>
-      <td><%= plant.name %></td>
+      <td align='center'><b><%= link_to plant.name, plant_path(plant) %></b></td>
       <td><%= plant.family&.name %></td>
       <td><%= plant.positive %></td>
       <td><%= plant.negative %></td>      

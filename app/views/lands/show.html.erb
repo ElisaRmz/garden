@@ -1,10 +1,14 @@
+<%= link_to 'Inicio', root_path %>
 <%= link_to 'Mis Huertos', lands_path %>
 
 <p>
   <strong><%= @land.name %></strong>
 </p>
 <p>
-  <%= @land.plants.map(&:name) %>
+  <%= @land.plants.sort_by(&:name).map(&:name) %>
 </p>
 
 <%= link_to 'Editar', edit_land_path(@land) %>
+
+<h1> Diario de las plantas </h1>
+<p> Fecha / Planta / Acción / Observaciones </p>

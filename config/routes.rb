@@ -14,6 +14,12 @@ Rails.application.routes.draw do
 
   resources :families
 
+  resources :works
+
+  resources :cares
+
+  resources :measures
+
 
   get 'macronutrients', to: 'macronutrients#index'
 

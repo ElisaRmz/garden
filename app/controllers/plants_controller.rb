@@ -2,6 +2,7 @@ class PlantsController < ApplicationController
 
   def index
     @plants = Plant.all
+    @families = Family.all
   end
 
   def show
@@ -14,10 +15,10 @@ class PlantsController < ApplicationController
 
   def edit
     @plant = Plant.find(params[:id])
+    @plants = Plant.all
   end
 
   def create
-    
     @plant = Plant.new(plant_params)
     @plant.name.capitalize!
     redirect_to @plant if @plant.save
@@ -59,6 +60,7 @@ class PlantsController < ApplicationController
       :seed,
       :grow,
       :harvest,
+      :works_note,
       :positive, 
       :negative,
       :note)
