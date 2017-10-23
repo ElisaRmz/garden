@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171002122221) do
+ActiveRecord::Schema.define(version: 20171023085808) do
 
   create_table "families", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20171002122221) do
 
   create_table "lands", force: :cascade do |t|
     t.string "name"
+    t.text "temperature"
   end
 
   create_table "lands_plants", id: false, force: :cascade do |t|

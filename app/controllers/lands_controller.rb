@@ -40,6 +40,7 @@ class LandsController < ApplicationController
   def land_params
     params.require(:land).permit(
       {plant_ids:[]},
+      :temperature,
       :name)
   end
 
