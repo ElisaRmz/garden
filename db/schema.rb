@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171023085808) do
+ActiveRecord::Schema.define(version: 20171024103403) do
+
+  create_table "diaries", force: :cascade do |t|
+    t.date "date"
+    t.string "action"
+    t.text "observation"
+  end
 
   create_table "families", force: :cascade do |t|
     t.string "name"
@@ -66,6 +72,8 @@ ActiveRecord::Schema.define(version: 20171023085808) do
     t.integer "family_id"
     t.text "note"
     t.text "works_note"
+    t.integer "temperature_max"
+    t.integer "temperature_min"
     t.index ["family_id"], name: "index_plants_on_family_id"
   end
 

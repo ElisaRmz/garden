@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   resources :measures
 
+  resources :diaries
+
 
   get 'macronutrients', to: 'macronutrients#index'
 

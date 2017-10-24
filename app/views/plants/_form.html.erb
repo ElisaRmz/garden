@@ -56,8 +56,12 @@
   <%= f.collection_select(:water, WATER, :to_s, :to_s) %>
 </p>
 <p>
-  <%= f.label :Temperatura %>
-  <%= f.text_field :temperature %> 
+  <%= f.label :'Temperatura Máxima (ºC)' %>
+  <%= f.text_field :temperature_max %> 
+</p>
+<p>
+  <%= f.label :'Temperatura Mínima (ºC)' %>
+  <%= f.text_field :temperature_min %> 
 </p>
 <p>
   <%= f.label 'Enfermedades:' %>

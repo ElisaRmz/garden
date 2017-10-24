@@ -16,7 +16,8 @@ th, td {
     <th>Nombre</th>
     <th>Luz</th>
     <th>Agua</th>
-    <th>Temperatura</th>
+    <th>Temperatura Máxima</th>
+    <th>Temperatura Mínima</th>
     <th>Enfermedades</th>
   </tr>
   <% @plants.sort_by{ |plant| plant.name }.each do |plant| %>
@@ -26,7 +27,8 @@ th, td {
       <td><%= plant.name %></td>
       <td><%= plant.sun %></td>
       <td><%= plant.water %></td>
-      <td><%= plant.temperature %></td>
+      <td><%= plant.temperature_max %></td>
+      <td><%= plant.temperature_min %></td>
       <td><%= plant.pests.map(&:name).sort %></td>
     </tr>
   <% end %>

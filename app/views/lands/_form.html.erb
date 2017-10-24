@@ -5,6 +5,10 @@
     <%= f.text_field :name %>
   </p>
   <p>
+    <%= f.label :Temperatura %>
+    <%= f.text_field :temperature %>
+  </p>
+  <p>
     <%= f.label :Plantas %><br>
     <%= f.collection_check_boxes(:plant_ids, Plant.all.order(:name), :id, :name) %><br>
     <%= link_to 'Añadir planta', new_plant_path %>

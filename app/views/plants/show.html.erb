@@ -46,8 +46,12 @@
     <%= @plant.water %>
 </p>
 <p>
-  <strong>Temperatura:</strong>
-  <%= @plant.temperature %>
+  <strong>Temperatura Máxima (ªC):</strong>
+  <%= @plant.temperature_max %>
+</p>
+<p>
+  <strong>Temperatura Mínima (ªC):</strong>
+  <%= @plant.temperature_min %>
 </p>
 <p>
   <strong><%= link_to 'Enfermedades:', pests_path(@pest) %></strong>

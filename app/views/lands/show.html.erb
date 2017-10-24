@@ -1,8 +1,11 @@
 <%= link_to 'Inicio', root_path %>
 <%= link_to 'Mis Huertos', lands_path %>
 
+<h1><%= @land.name %></h1>
+
 <p>
-  <strong><%= @land.name %></strong>
+  <strong><%= 'Temperatura:' %></strong>
+  <%= @land.temperature %>
 </p>
 <p>
   <%= @land.plants.sort_by(&:name).map(&:name) %>
@@ -10,5 +13,5 @@
 
 <%= link_to 'Editar', edit_land_path(@land) %>
 
-<h1> Diario de las plantas </h1>
+<h2> Diario de las plantas </h2>
 <p> Fecha / Planta / Acción / Observaciones </p>
