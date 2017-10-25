@@ -51,10 +51,12 @@
   <%= f.label :Luz %>
   <%= f.text_field :sun %>
 </p>
-<p>
-  <%= f.label :Agua %>
-  <%= f.collection_select(:water, WATER, :to_s, :to_s) %>
-</p>
+
+# <p>
+#  <%= f.label :Agua %>
+#  <%= f.collection_select(:water, WATER, :to_s, :to_s) %>
+# </p>
+
 <p>
   <%= f.label :'Temperatura Máxima (ºC)' %>
   <%= f.text_field :temperature_max %> 
