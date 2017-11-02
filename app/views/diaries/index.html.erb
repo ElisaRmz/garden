@@ -1,1 +1,23 @@
-<h1>Probando</h1>
+<%= link_to 'Mis huertos', lands_path %>
+
+<table>
+	
+	<tr>
+		<th></th>
+		<th>Fecha</th>
+		<th>Planta</th>
+		<th>Acción</th>
+		<th>Observaciones</th>
+	</tr>
+
+	<% @diaries.sort_by{ |diary| diary.date }.each do |diary| %>
+		<tr>
+			<td><%= link_to 'Eliminar', diary_path(diary), method: :delete, data: {confirm: '¿Deseas eliminarlo?' }					%></td>
+			<td><%= diary.date        %></td>
+			<td><%=      %></td>
+			<td><%= diary.action      %></td>
+			<td><%= diary.observation %></td>
+		</tr>
+	<% end %>
+
+</table>

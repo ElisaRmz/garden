@@ -1,3 +1,4 @@
 class Land < ApplicationRecord
-  has_and_belongs_to_many :plants
+	has_many :plantations
+	has_many :plants, through: :plantations
 end

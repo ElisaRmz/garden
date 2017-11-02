@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024103403) do
+ActiveRecord::Schema.define(version: 20171102145247) do
 
   create_table "diaries", force: :cascade do |t|
     t.date "date"
     t.string "action"
     t.text "observation"
+    t.integer "plantation_id"
+    t.index ["plantation_id"], name: "index_diaries_on_plantation_id"
   end
 
   create_table "families", force: :cascade do |t|
@@ -26,13 +28,6 @@ ActiveRecord::Schema.define(version: 20171024103403) do
   create_table "lands", force: :cascade do |t|
     t.string "name"
     t.text "temperature"
-  end
-
-  create_table "lands_plants", id: false, force: :cascade do |t|
-    t.integer "plant_id", null: false
-    t.integer "land_id", null: false
-    t.index ["land_id", "plant_id"], name: "index_lands_plants_on_land_id_and_plant_id"
-    t.index ["plant_id", "land_id"], name: "index_lands_plants_on_plant_id_and_land_id"
   end
 
   create_table "pests", force: :cascade do |t|
@@ -49,6 +44,13 @@ ActiveRecord::Schema.define(version: 20171024103403) do
     t.integer "pest_id", null: false
     t.index ["pest_id", "plant_id"], name: "index_pests_plants_on_pest_id_and_plant_id"
     t.index ["plant_id", "pest_id"], name: "index_pests_plants_on_plant_id_and_pest_id"
+  end
+
+  create_table "plantations", force: :cascade do |t|
+    t.integer "plant_id"
+    t.integer "land_id"
+    t.index ["land_id"], name: "index_plantations_on_land_id"
+    t.index ["plant_id"], name: "index_plantations_on_plant_id"
   end
 
   create_table "plants", force: :cascade do |t|

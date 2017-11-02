@@ -7,10 +7,10 @@
   	<%= f.date_field :date %>
   </p>
 
-  
-  # f.label :Planta
-  # f.collection_select(:plant_ids, Plant.order(:name), :id, :name)
-  
+  <p>
+    <%= f.label :Planta %>
+    <%#= f.collection_select(:plant_id, Plant.order(:name), :id, :name, {include_hidden: false}) %>
+  </p>
 
   <p>
   	<%= f.label :Acción %>

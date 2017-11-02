@@ -13,15 +13,21 @@ class DiariesController < ApplicationController
   end
 
   def create
-  	@diary = Diary.new(plant_params)
+  	@diary = Diary.new(diary_params)
   	redirect_to @diary if @diary.save
+  end
+
+  def destroy
+    @diary = Diary.find(params[:id])
+    @diary.destroy
+    redirect_to action: 'index'
   end
 
   private
 
-  def plant_params
+  def diary_params
   	params.require(:diary).permit(
-  		{plant_ids:[]},
+  		:plantation_id,
   		:date,
   		:action,
   		:observation)

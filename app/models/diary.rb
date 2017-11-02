@@ -1,5 +1,4 @@
 class Diary < ApplicationRecord
-	
-#	belongs_to :plants
+	belongs_to :plantation
 
 end
