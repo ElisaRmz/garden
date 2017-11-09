@@ -9,12 +9,21 @@ class DiariesController < ApplicationController
   end
 
   def new
-  	@diary = Diary.new
+    @land = Land.find(params[:land_id])
+    @diary = Diary.new
+  end
+
+  def edit
+    
   end
 
   def create
   	@diary = Diary.new(diary_params)
   	redirect_to @diary if @diary.save
+  end
+
+  def update
+    
   end
 
   def destroy

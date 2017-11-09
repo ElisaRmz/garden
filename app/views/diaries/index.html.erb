@@ -5,6 +5,7 @@
 	<tr>
 		<th></th>
 		<th>Fecha</th>
+		<th>Huerto</th>
 		<th>Planta</th>
 		<th>Acción</th>
 		<th>Observaciones</th>
@@ -12,11 +13,12 @@
 
 	<% @diaries.sort_by{ |diary| diary.date }.each do |diary| %>
 		<tr>
-			<td><%= link_to 'Eliminar', diary_path(diary), method: :delete, data: {confirm: '¿Deseas eliminarlo?' }					%></td>
-			<td><%= diary.date        %></td>
-			<td><%=      %></td>
-			<td><%= diary.action      %></td>
-			<td><%= diary.observation %></td>
+			<td><%= link_to 'Eliminar', diary_path(diary), method: :delete, data: {confirm: '¿Deseas eliminarlo?' }					  %></td>
+			<td><%= diary.plantation.land.name  %></td>
+			<td><%= diary.date                  %></td>
+			<td><%= diary.plantation.plant.name %></td>
+			<td><%= diary.action                %></td>
+			<td><%= diary.observation           %></td>
 		</tr>
 	<% end %>
 

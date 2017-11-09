@@ -9,7 +9,12 @@
 
   <p>
     <%= f.label :Planta %>
-    <%#= f.collection_select(:plant_id, Plant.order(:name), :id, :name, {include_hidden: false}) %>
+    <%= f.collection_select(
+      :plantation_id, 
+      @land.plantations, 
+      :id,
+      ->(plantation) { plantation.plant.name },
+      {include_hidden: false}) %>
   </p>
 
   <p>

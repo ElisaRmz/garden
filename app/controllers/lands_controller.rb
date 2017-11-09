@@ -7,7 +7,7 @@ class LandsController < ApplicationController
 
   def show
     @land = Land.find(params[:id])
-    @diaries = Diary.all
+    @diaries = @land.diaries
   end
 
   def new

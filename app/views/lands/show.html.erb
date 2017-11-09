@@ -14,7 +14,7 @@
 <%= link_to 'Editar', edit_land_path(@land) %>
 
 <h2> Diario de las plantas </h2>
-<%= link_to 'Añadir acción', new_diary_path %>
+<%= link_to 'Añadir acción', new_diary_path(land_id: @land.id) %>
 
 <table>
 	
@@ -29,10 +29,10 @@
 	<% @diaries.sort_by{ |diary| diary.date }.each do |diary| %>
 		<tr>
 			<td><%= link_to 'Eliminar', diary_path(diary), method: :delete, data: {confirm: '¿Deseas eliminarlo?' }					 							 %></td>
-			<td><%= diary.date        %></td>
-			<td><%=       %></td>
-			<td><%= diary.action      %></td>
-			<td><%= diary.observation %></td>
+			<td><%= diary.date                  %></td>
+			<td><%= diary.plantation.plant.name %></td>
+			<td><%= diary.action      					%></td>
+			<td><%= diary.observation 					%></td>
 		</tr>
 	<% end %>
 
