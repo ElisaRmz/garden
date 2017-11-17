@@ -1,33 +1,3 @@
 <h1>Nueva acción</h1>
 
-<%= form_for @diary do |f| %>
-
-  <p>
-  	<%= f.label :Fecha %>
-  	<%= f.date_field :date %>
-  </p>
-
-  <p>
-    <%= f.label :Planta %>
-    <%= f.collection_select(
-      :plantation_id, 
-      @land.plantations, 
-      :id,
-      ->(plantation) { plantation.plant.name },
-      {include_hidden: false}) %>
-  </p>
-
-  <p>
-  	<%= f.label :Acción %>
-  	<%= f.text_field :action %>
-  </p>
-  <p>
-  	<%= f.label :Observaciones %>
-  	<%= f.text_area :observation %>
-  </p>
-
-  <p>
-  	<%= f.submit %>
-  </p>
-
-<% end %>
+<%= render 'form' %>

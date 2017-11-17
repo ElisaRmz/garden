@@ -20,4 +20,17 @@ describe Plant do
 		expect(Plant.new).to respond_to :name
 	end
 
+	it 'has family' do
+		expect(Plant.new).to respond_to :family
+	end
+
+	describe '#lands' do
+		it 'returns instances of Lands' do
+			plant = Plant.new
+			land = plant.lands.build
+
+			expect(plant.lands).to include land
+		end
+	end		
+
 end
