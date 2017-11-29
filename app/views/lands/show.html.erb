@@ -13,14 +13,41 @@
 
 <%= link_to 'Editar', edit_land_path(@land) %>
 
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;}
+th, td {
+    padding: 5px;}
+</style>
+
+<h2>Trabajos a realizar</h2>
+
+<table>
+	
+	<tr>
+		<th>Fecha</th>
+		<th>Planta</th>
+		<th>Acción</th>
+	</tr>
+
+	<% @plants.each do |plant| %>
+		<tr>
+			<td> plant.date </td>
+			<td><%= plant.name %></td>
+			<td></td>
+		</tr>
+	<% end %>
+
+</table>
+
 <h2> Diario de las plantas </h2>
 <%= link_to 'Añadir acción', new_diary_path(land_id: @land.id) %>
 
 <table>
 	
 	<tr>
-		<th></th>
-		<th></th>
+		<th colspan='2'></th>
 		<th>Fecha</th>
 		<th>Planta</th>
 		<th>Acción</th>
