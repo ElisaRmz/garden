@@ -26,16 +26,20 @@ th, td {
 <table>
 	
 	<tr>
-		<th>Fecha</th>
 		<th>Planta</th>
-		<th>Acción</th>
+		<th>Sembrar</th>
+		<th>Plantar</th>
+		<th>Cosechar</th>
+		
 	</tr>
 
 	<% @plants.each do |plant| %>
 		<tr>
-			<td> plant.date </td>
-			<td><%= plant.name %></td>
-			<td></td>
+			<td><%= link_to plant.name, plant_path(plant) %></td>
+			<td><%= plant.seed %></td>
+			<td><%= plant.grow %></td>
+			<td><%= plant.harvest %></td>
+			
 		</tr>
 	<% end %>
 
