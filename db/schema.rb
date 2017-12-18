@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171102145247) do
+ActiveRecord::Schema.define(version: 20171215124621) do
 
   create_table "diaries", force: :cascade do |t|
     t.date "date"
     t.string "action"
     t.text "observation"
     t.integer "plantation_id"
+    t.date "next_date"
+    t.string "task"
     t.index ["plantation_id"], name: "index_diaries_on_plantation_id"
   end
 

@@ -39,6 +39,7 @@ describe Plant do
 	  it 'has plantations' do
 	  	expect(Plant.new).to respond_to :plantations
 	  end
+
 	end
 
 	describe '#lands' do

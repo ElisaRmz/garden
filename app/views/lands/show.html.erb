@@ -21,7 +21,7 @@ th, td {
     padding: 5px;}
 </style>
 
-<h2>Trabajos a realizar</h2>
+<h2>Trabajos programados a realizar</h2>
 
 <table>
 	
@@ -30,7 +30,6 @@ th, td {
 		<th>Sembrar</th>
 		<th>Plantar</th>
 		<th>Cosechar</th>
-		
 	</tr>
 
 	<% @plants.each do |plant| %>
@@ -45,6 +44,24 @@ th, td {
 
 </table>
 
+<h2> Tareas puntuales a realizar </h2>
+
+<table>
+	<tr>
+		<th>Planta</th>
+		<th>Fecha</th>
+		<th>Acción</th>
+	</tr>
+
+	<% @diaries.each do |diary| %>
+		<tr>
+			<td><%= diary.plantation.plant.name %></td>
+			<td><%= diary.next_date %></td>
+			<td><%= diary.task %></td>
+		</tr>
+	<% end %>
+</table>
+
 <h2> Diario de las plantas </h2>
 <%= link_to 'Añadir acción', new_diary_path(land_id: @land.id) %>
 
@@ -56,6 +73,8 @@ th, td {
 		<th>Planta</th>
 		<th>Acción</th>
 		<th>Observaciones</th>
+		<th>Próxima fecha</th>
+		<th>Próxima tarea</th>
 	</tr>
 
 	<% @diaries.sort_by{ |diary| diary.date }.each do |diary| %>
@@ -66,6 +85,8 @@ th, td {
 			<td><%= diary.plantation.plant.name %></td>
 			<td><%= diary.action      					%></td>
 			<td><%= diary.observation 					%></td>
+			<td><%= diary.next_date             %></td>
+			<td><%= diary.task                  %></td>
 		</tr>
 	<% end %>
 
