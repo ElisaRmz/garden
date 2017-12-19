@@ -10,6 +10,10 @@ describe Plant do
 		expect(Plant.new).to respond_to :water
 	end
 
+	it 'has seed' do
+		expect(Plant.new).to respond_to :seed
+	end
+
 	describe '#pests' do
 		it 'returns instances of Pests' do
 			plant = Plant.new
