@@ -17,7 +17,7 @@ describe Plant do
 	describe '#pests' do
 		it 'returns instances of Pests' do
 			plant = Plant.new
-			pest =plant.pests.build
+			pest = plant.pests.build
 			expect(plant.pests).to include pest
 		end
 		it 'has pests' do
