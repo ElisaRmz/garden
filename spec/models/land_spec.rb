@@ -5,6 +5,7 @@ describe Land do
   it 'has name' do
     expect(Land.new).to respond_to :name
   end
+
   it 'has temperature' do
     expect(Land.new).to respond_to :temperature
   end
@@ -19,7 +20,7 @@ describe Land do
       expect(Land.new).to respond_to :plantations
     end
   end
-
+  
   describe '#Plant' do
     it 'returns instances of Plant' do
       land = Land.new
