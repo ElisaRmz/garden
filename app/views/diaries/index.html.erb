@@ -1,4 +1,13 @@
+<%= link_to 'Inicio', root_path %> -
 <%= link_to 'Mis huertos', lands_path %>
+
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;}
+th, td {
+    padding: 5px;}
+</style>
 
 <table>
 	
@@ -14,9 +23,9 @@
 	<% @diaries.sort_by{ |diary| diary.date }.each do |diary| %>
 		<tr>
 			<td><%= link_to 'Eliminar', diary_path(diary), method: :delete, data: {confirm: '¿Deseas eliminarlo?' }					  %></td>
-			<td><%= diary.plantation.land.name  %></td>
-			<td><%= diary.date                  %></td>
-			<td><%= diary.plantation.plant.name %></td>
+			<td><%= diary.date  %></td>
+			<td><%= 'diary.plantation.land.name' %></td>
+			<td><%= 'diary.plantation.plant.name' %></td>
 			<td><%= diary.action                %></td>
 			<td><%= diary.observation           %></td>
 		</tr>

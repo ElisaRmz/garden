@@ -23,6 +23,14 @@
   	<%= f.label :Observaciones %>
   	<%= f.text_area :observation %>
   </p>
+  <p>
+    <%= f.label 'Próxima fecha' %>
+    <%= f.date_field :next_date %>
+  </p>
+  <p>
+    <%= f.label 'Próxima Tarea' %>
+    <%= f.text_field :task %>
+  </p>
 
   <p>
   	<%= f.submit %>

@@ -21,8 +21,7 @@ class PlantsController < ApplicationController
   def create
     @plant = Plant.new(plant_params)
     @plant.name.capitalize!
-    redirect_to @plant if @plant.save
-    
+    redirect_to @plant if @plant.save   
   end
 
   def update
@@ -44,11 +43,10 @@ class PlantsController < ApplicationController
   
   def plant_params
     params.require(:plant).permit(
-      {pest_ids:[]},
       :family_id,
       :name, 
       :edible, 
-      :family, 
+      :family,
       :sun, 
       :water, 
       :temperature_max,
@@ -58,13 +56,14 @@ class PlantsController < ApplicationController
       :height, 
       :depth, 
       :tallness, 
-      :seed,
-      :grow,
-      :harvest,
       :works_note,
       :positive, 
       :negative,
-      :note)
+      :note,
+      pest_ids:[],
+      seed:[],
+      grow:[],
+      harvest:[])
   end
 
 end

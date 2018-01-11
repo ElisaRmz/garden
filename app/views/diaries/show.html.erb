@@ -8,12 +8,10 @@ Volver a un id concreto, ¿cómo?
   	<%= 'Fecha:' %>
   	<%= @diary.date %>
   </p>
-
   <p>
     <%= 'Planta:' %>
     <%= @diary.plantation.plant.name %>
   </p>
-
   <p>
   	<%= 'Acción:' %>
   	<%= @diary.action %>
@@ -22,5 +20,14 @@ Volver a un id concreto, ¿cómo?
   	<%= 'Observaciones:' %>
   	<%= @diary.observation %>
   </p>
+  <p>
+    <%= 'Próxima fecha:' %>
+    <%= @diary.next_date %>
+  </p>
+  <p>
+    <%= 'Próxima tarea:' %>
+    <%= @diary.task %>
+  </p>
+
 
 <%= link_to 'Editar', edit_diary_path %>

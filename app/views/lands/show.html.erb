@@ -13,18 +13,90 @@
 
 <%= link_to 'Editar', edit_land_path(@land) %>
 
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;}
+th, td {
+    padding: 5px;}
+</style>
+
+<h2>Compatibilidad entre plantas</h2>
+
+<table>
+	
+	<tr>
+		<th></th>
+		<% @plants.sort_by(&:name).each do |plant| %>
+			<th><%= plant.name %></th>
+		<% end %>
+	</tr>
+
+	<% @plants.sort_by(&:name).each do |plant| %>
+		<tr>
+			<td><%= link_to plant.name, plant_path(plant) %></td>
+			<% @plants.each do |plant|%>
+				<td><%= "•" if plant.equal?(name: plant.name) %></td>
+			<% end %>
+		</tr>
+	<% end %>
+
+</table>
+
+<h2>Trabajos programados a realizar</h2>
+
+<table>
+	
+	<tr>
+		<th>Planta</th>
+		<th>Sembrar</th>
+		<th>Plantar</th>
+		<th>Cosechar</th>
+	</tr>
+
+	<% @plants.each do |plant| %>
+		<tr>
+			<td><%= link_to plant.name, plant_path(plant) %></td>
+			<td><%= plant.seed %></td>
+			<td><%= plant.grow %></td>
+			<td><%= plant.harvest %></td>
+			
+		</tr>
+	<% end %>
+
+</table>
+
+<h2> Tareas puntuales a realizar </h2>
+
+<table>
+	<tr>
+		<th>Planta</th>
+		<th>Fecha</th>
+		<th>Acción</th>
+	</tr>
+
+	<% @diaries.each do |diary| %>
+		<tr>
+			<td><%= diary.plantation.plant.name %></td>
+			<td><%= diary.next_date %></td>
+			<td><%= diary.task %></td>
+		</tr>
+	<% end %>
+</table>
+
 <h2> Diario de las plantas </h2>
 <%= link_to 'Añadir acción', new_diary_path(land_id: @land.id) %>
 
 <table>
 	
 	<tr>
-		<th></th>
-		<th></th>
+		<th colspan='2'></th>
 		<th>Fecha</th>
 		<th>Planta</th>
 		<th>Acción</th>
 		<th>Observaciones</th>
+		<th>Próxima fecha</th>
+		<th>Próxima tarea</th>
 	</tr>
 
 	<% @diaries.sort_by{ |diary| diary.date }.each do |diary| %>
@@ -35,6 +107,8 @@
 			<td><%= diary.plantation.plant.name %></td>
 			<td><%= diary.action      					%></td>
 			<td><%= diary.observation 					%></td>
+			<td><%= diary.next_date             %></td>
+			<td><%= diary.task                  %></td>
 		</tr>
 	<% end %>
 

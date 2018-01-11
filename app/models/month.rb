@@ -1,5 +1,4 @@
-
-  MONTH = %w(
+MONTH = %w(
     Enero 
     Febrero 
     Marzo 

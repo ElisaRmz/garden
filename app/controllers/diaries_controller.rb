@@ -41,7 +41,9 @@ class DiariesController < ApplicationController
   		:plantation_id,
   		:date,
   		:action,
-  		:observation)
+  		:observation,
+      :next_date,
+      :task)
   end
 
 end
