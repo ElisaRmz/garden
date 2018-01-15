@@ -19,6 +19,7 @@ describe Plant do
 			plant = Plant.new
 			pest = plant.pests.build
 			expect(plant.pests).to include pest
+			#plant.pests.include? pest (significado línea anterior)
 		end
 		it 'has pests' do
 			expect(Plant.new).to respond_to :pests
@@ -26,7 +27,12 @@ describe Plant do
 	end
 
 	describe '#families' do
-	  it 'has family' do
+		it 'retuns instances of Families' do
+			plant = Plant.new
+			family = plant.build_family
+			expect(plant.family).to eq family
+		end
+	  it 'has families' do
 	  	expect(Plant.new).to respond_to :family
 	  end
 	end	

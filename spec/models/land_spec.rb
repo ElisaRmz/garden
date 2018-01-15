@@ -21,7 +21,7 @@ describe Land do
     end
   end
   
-  describe '#Plant' do
+  describe '#plants' do
     it 'returns instances of Plant' do
       land = Land.new
       plant = land.plants.build
@@ -32,7 +32,7 @@ describe Land do
     end
   end
 
-  describe '#Diary' do
+  describe '#diaries' do
     it 'returns instances of Diary' do
       land = Land.new
       diary = land.diaries.build
