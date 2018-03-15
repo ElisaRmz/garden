@@ -18,14 +18,6 @@
   <%= link_to family.name, family_path(family) %>,
 <% end %>
 
-<style>
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;}
-th, td {
-    padding: 5px;}
-</style>
-
 <h2 align='center'><%= link_to 'Trabajos a realizar', works_path %><%= ' - ' %>
     <%= link_to 'Cuidados', cares_path %><%= ' - ' %>
     <%= link_to 'Distancias y dimensiones', measures_path %></h2>
@@ -35,9 +27,9 @@ th, td {
 <table>
   <tr>
     <th></th>
-    <th><%= 'Familia' %></th>
-    <th><%= 'Positivas' %></th>
-    <th><%= 'Negativas' %></th>
+    <th> Familia </th>
+    <th> Positivas </th>
+    <th> Negativas </th>
   </tr>
   <% @plants.sort_by{ |plant| plant.name }.each do |plant| %>
     <tr>
