@@ -1,11 +1,12 @@
 class PestsController < ApplicationController
 
+  before_action :find_pest, only: [:show, :edit, :update, :destroy]
+
   def index
     @pests = Pest.all
   end
 
   def show
-    @pest = Pest.find(params[:id])
   end
 
   def new
@@ -13,7 +14,6 @@ class PestsController < ApplicationController
   end
 
   def edit
-    @pest = Pest.find(params[:id])
   end
 
   def create
@@ -24,18 +24,20 @@ class PestsController < ApplicationController
   end
 
   def update
-    @pest = Pest.find(params[:id])
     @pest.update(pest_params)
     redirect_to action: 'show'
   end
 
   def destroy
-    @pest = Pest.find(params[:id])
     @pest.destroy
     redirect_to action: "index"
   end
 
   private
+
+  def find_pest
+    @pest = Pest.find(params[:id])    
+  end
 
   def pest_params
     params.require(:pest).permit(

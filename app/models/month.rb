@@ -12,4 +12,3 @@ MONTH = %w(
     Noviembre 
     Diciembre
     No)
-

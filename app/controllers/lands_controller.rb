@@ -1,12 +1,13 @@
 class LandsController < ApplicationController
 
+  before_action :find_land, only: [:show, :edit, :update, :destroy]
+
   def index
     @lands = Land.all
     @plants = Plant.all
   end
 
   def show
-    @land = Land.find(params[:id])
     @diaries = @land.diaries
     @plants = @land.plants
   end
@@ -16,7 +17,6 @@ class LandsController < ApplicationController
   end
 
   def edit
-    @land = Land.find(params[:id])
   end
 
   def create
@@ -26,18 +26,20 @@ class LandsController < ApplicationController
   end
 
   def update
-    @land = Land.find(params[:id])
     @land.update(land_params)
     redirect_to @land
   end
 
   def destroy
-    @land = Land.find(params[:id])
     @land.destroy
     redirect_to action: 'index'
   end
   
   private
+
+  def find_land
+    @land = Land.find(params[:id])   
+  end
 
   def land_params
     params.require(:land).permit(

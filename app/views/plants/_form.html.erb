@@ -85,7 +85,7 @@
   </p>
   <p>
     <%= f.label 'Tipo de raíz' %>
-    <%= f.collection_select(:depth, DEPTH, :to_s, :to_s) %>
+    <%= f.collection_select(:depth, Plant.humanized_depths, :last, :first) %>
   </p>
   <p>
     <%= f.label 'Altura de la planta cm' %>

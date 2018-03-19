@@ -1,12 +1,13 @@
 class PlantsController < ApplicationController
 
+  before_action :find_plant, only: [:show, :edit, :update, :destroy]
+
   def index
     @plants = Plant.all
     @families = Family.all
   end
 
   def show
-    @plant = Plant.find(params[:id])
   end
 
   def new
@@ -14,7 +15,6 @@ class PlantsController < ApplicationController
   end
 
   def edit
-    @plant = Plant.find(params[:id])
     @plants = Plant.all
   end
 
@@ -25,7 +25,6 @@ class PlantsController < ApplicationController
   end
 
   def update
-    @plant = Plant.find(params[:id])
     @plant.update(plant_params)    
     @plant.name.capitalize!
 
@@ -34,12 +33,15 @@ class PlantsController < ApplicationController
   end
 
   def destroy
-    @plant = Plant.find(params[:id])
     @plant.destroy
     redirect_to action: 'index'
   end
 
   private
+  
+  def find_plant
+     @plant = Plant.find(params[:id])   
+  end
   
   def plant_params
     params.require(:plant).permit(

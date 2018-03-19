@@ -1,11 +1,12 @@
 class DiariesController < ApplicationController
 
+  before_action :find_diary, only: [:show, :edit, :update, :destroy]
+
   def index
   	@diaries = Diary.all
   end
 
   def show
-  	@diary = Diary.find(params[:id])
   end
 
   def new
@@ -14,7 +15,6 @@ class DiariesController < ApplicationController
   end
 
   def edit
-    @diary = Diary.find(params[:id])
   end
 
   def create
@@ -23,18 +23,20 @@ class DiariesController < ApplicationController
   end
 
   def update
-    @diary = Diary.find(params[:id])
     @diary.save(diary_params)
     redirect_to @diary
   end
 
   def destroy
-    @diary = Diary.find(params[:id])
     @diary.destroy
     redirect_to action: 'index'
   end
 
   private
+
+  def find_diary
+    @diary = Diary.find(params[:id])
+  end
 
   def diary_params
   	params.require(:diary).permit(
