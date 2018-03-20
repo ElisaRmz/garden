@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180319100111) do
+ActiveRecord::Schema.define(version: 20180320122258) do
 
   create_table "diaries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.date "date"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 20180319100111) do
     t.text "definition"
   end
 
+  create_table "group_pests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+  end
+
+  create_table "group_pests_pests", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "pest_id", null: false
+    t.bigint "group_pest_id", null: false
+    t.index ["group_pest_id", "pest_id"], name: "index_group_pests_pests_on_group_pest_id_and_pest_id"
+    t.index ["pest_id", "group_pest_id"], name: "index_group_pests_pests_on_pest_id_and_group_pest_id"
+  end
+
   create_table "lands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.text "temperature"
@@ -38,7 +49,7 @@ ActiveRecord::Schema.define(version: 20180319100111) do
     t.text "beat"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "group"
+    t.integer "group_pest_id"
   end
 
   create_table "pests_plants", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

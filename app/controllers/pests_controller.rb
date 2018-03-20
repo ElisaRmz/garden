@@ -43,7 +43,7 @@ class PestsController < ApplicationController
     params.require(:pest).permit(
       {plant_ids:[]},
       :name,
-      :group,
+      :group_pest_id,
       :damage,
       :beat)
   end

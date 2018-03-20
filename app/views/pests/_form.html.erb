@@ -5,7 +5,7 @@
   </p>
   <p>
     <%= f.label :Grupo %>
-    <%= f.collection_select(:group, GROUP_PEST, :to_s, :to_s) %>
+    <%= f.collection_select(:group_pest_id, GroupPest.all, :id, :name) %>
   </p>
   <p>
     <%= f.label :Daños %>
