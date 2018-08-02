@@ -14,7 +14,10 @@ class Plant < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   
   def self.humanized_depths
-    depths.transform_keys { |key| key.humanize }
+    hash = {}
+    depths.each do |k,v|
+      hash[k.humanize] = k
+    end
+    hash
   end
-
 end
